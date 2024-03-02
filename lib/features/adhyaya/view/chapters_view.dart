@@ -45,7 +45,7 @@ class ChaptersView extends ConsumerWidget {
                       .go(context);
                 },
                 index: getAllChapterMmode[index].chapterNumber.toString(),
-                title: getAllChapterMmode[index].name ?? "",
+                title: getAllChapterMmode[index].nameTranslated ?? "",
                 versesNumber: getAllChapterMmode[index].versesCount.toString());
           },
         )
