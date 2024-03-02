@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:task_app/config/theme/constant/image_path.dart';
 import 'package:task_app/config/theme/constant/storage_constant.dart';
+import 'package:task_app/features/adhyaya/screen/adhaya_screen.dart';
 import 'package:task_app/routes/app_routes.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -28,7 +29,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
       if (isOnBoarded) {
-        const HomeRoute().go(context);
+        const AdhayaListingRoute().pushReplacement(context);
       } else {
         const OnBoardingRoute().go(context);
       }

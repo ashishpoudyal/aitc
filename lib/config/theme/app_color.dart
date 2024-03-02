@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class AppColor {
   static const scafoldColorLight = Color(0xFFFFFFFF);
   static const scafoldColorDark = Color(0xFF121212);
-  static const royalBlue = Color(0xFF246EE9);
   static const goldenColor = Color(0xFFFFD700);
   static const darkContainerColor = Color(0xFF181818);
   static const lightcontainercolor = Color(0xFFFFFFFF);
@@ -19,10 +18,12 @@ class AppColor {
   static const onprimaryColor = Colors.white;
   static const primaryVariant = Color(0xff34d399);
 
-  // secondary
+  // color
+  static const blueColor = Color(0xff5D2EC0);
 
   static const onSecondaryColor = Color(0xffF9902D);
   static const secondaryVariant = Color(0xffb98f3b);
+  static const greyTextColor = Color(0xff627485);
 
   // error
   static const errorColor = Color(0xffEF2926);

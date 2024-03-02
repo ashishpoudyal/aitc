@@ -38,8 +38,12 @@ RouteBase get $splashRoute => GoRouteData.$route(
       factory: $SplashRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: 'onboardingRoute',
+          path: 'onboarding',
           factory: $OnBoardingRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: 'adhayaListing',
+          factory: $AdhayaListingRouteExtension._fromState,
         ),
       ],
     );
@@ -66,7 +70,25 @@ extension $OnBoardingRouteExtension on OnBoardingRoute {
       const OnBoardingRoute();
 
   String get location => GoRouteData.$location(
-        '/splash/onboardingRoute',
+        '/splash/onboarding',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AdhayaListingRouteExtension on AdhayaListingRoute {
+  static AdhayaListingRoute _fromState(GoRouterState state) =>
+      const AdhayaListingRoute();
+
+  String get location => GoRouteData.$location(
+        '/splash/adhayaListing',
       );
 
   void go(BuildContext context) => context.go(location);

@@ -5,4 +5,6 @@ class ImagePath {
   static const onboard2 = "$basePath/onboard2.png";
   static const onboard3 = "$basePath/onboard3.png";
   static const onboard4 = "$basePath/onboard4.png";
+  static const adhaya = "$basePath/adhaya.png";
+  static const adhaya2 = "$basePath/adhaya2.png";
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:task_app/features/adhyaya/screen/adhaya_screen.dart';
 import 'package:task_app/features/onboarding/screen/onboarding_screen.dart';
 import 'package:task_app/features/onboarding/screen/splash_screen.dart';
 import 'package:task_app/home/screen/home_screen.dart';
@@ -14,7 +15,8 @@ class HomeRoute extends GoRouteData {
 }
 
 @TypedGoRoute<SplashRoute>(path: "/splash", routes: [
-  TypedGoRoute<OnBoardingRoute>(path: 'onboardingRoute', routes: [])
+  TypedGoRoute<OnBoardingRoute>(path: 'onboarding', routes: []),
+  TypedGoRoute<AdhayaListingRoute>(path: 'adhayaListing', routes: [])
 ])
 class SplashRoute extends GoRouteData {
   const SplashRoute();
@@ -30,4 +32,12 @@ class OnBoardingRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const OnBoardingScreen();
+}
+
+class AdhayaListingRoute extends GoRouteData {
+  const AdhayaListingRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const AdhayaScreen();
 }
