@@ -35,8 +35,10 @@ class ChapterRepository implements IChapterRepo {
       );
       return Right(getAllChapterModelFromJson(jsonEncode(response)));
     } on CustomHttpException catch (e) {
-      return Left(
-          Failure(message: e.message.toString(), title: e.title.toString()));
+      return Left(Failure(
+          message: e.message.toString(),
+          title: e.title.toString(),
+          statusCode: e.statusCode ?? 0));
     }
   }
 
@@ -49,8 +51,10 @@ class ChapterRepository implements IChapterRepo {
       );
       return Right(particularChapterModelFromJson(jsonEncode(response)));
     } on CustomHttpException catch (e) {
-      return Left(
-          Failure(message: e.message.toString(), title: e.title.toString()));
+      return Left(Failure(
+          message: e.message.toString(),
+          title: e.title.toString(),
+          statusCode: e.hashCode ?? 0));
     }
   }
 
@@ -63,8 +67,10 @@ class ChapterRepository implements IChapterRepo {
 
       return Right(verseListModelFromJson(jsonEncode(response)));
     } on CustomHttpException catch (e) {
-      return Left(
-          Failure(message: e.message.toString(), title: e.title.toString()));
+      return Left(Failure(
+          message: e.message.toString(),
+          title: e.title.toString(),
+          statusCode: e.statusCode ?? 0));
     }
   }
 
@@ -78,8 +84,10 @@ class ChapterRepository implements IChapterRepo {
 
       return Right(particularVerseModelFromJson(jsonEncode(response)));
     } on CustomHttpException catch (e) {
-      return Left(
-          Failure(message: e.message.toString(), title: e.title.toString()));
+      return Left(Failure(
+          message: e.message.toString(),
+          title: e.title.toString(),
+          statusCode: e.statusCode ?? 0));
     }
   }
 }

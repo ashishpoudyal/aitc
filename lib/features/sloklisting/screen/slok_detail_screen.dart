@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_app/config/theme/app_color.dart';
 import 'package:task_app/features/sloklisting/provider/get_particular_ver_provider.dart';
+import 'package:task_app/services/network/failure.dart';
+import 'package:task_app/widgets/custom_error_widget.dart';
 
 class SlokDetailScreen extends ConsumerStatefulWidget {
   final String verseNum;
@@ -129,10 +131,17 @@ class _SlokDetailScreenState extends ConsumerState<SlokDetailScreen> {
             );
           },
           error: (error, stackTrace) {
-            return Text(error.toString());
+            return CustomErrorWidgets(
+              failure: error as Failure,
+              onTap: () {
+                ref
+                    .read(getparticularVersProvider.notifier)
+                    .getParticularVerse(widget.id, widget.verseNum);
+              },
+            );
           },
           loading: () {
-            return CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           },
         ));
   }

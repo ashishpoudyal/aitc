@@ -6,6 +6,8 @@ import 'package:task_app/features/adhyaya/provider/getall_chapter_provider.dart'
 import 'package:task_app/features/adhyaya/view/chapters_view.dart';
 import 'package:task_app/features/adhyaya/view/image_overlap_view.dart';
 import 'package:task_app/features/adhyaya/view/last_read_view.dart';
+import 'package:task_app/services/network/failure.dart';
+import 'package:task_app/widgets/custom_error_widget.dart';
 
 class AdhayaScreen extends ConsumerStatefulWidget {
   const AdhayaScreen({super.key});
@@ -17,7 +19,6 @@ class AdhayaScreen extends ConsumerStatefulWidget {
 class _AdhayaScreenState extends ConsumerState<AdhayaScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     Future.delayed(const Duration(microseconds: 10), () {
       ref.read(getAllChapterProvider.notifier).getAllChapter();
     });
@@ -42,7 +43,7 @@ class _AdhayaScreenState extends ConsumerState<AdhayaScreen> {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings_outlined,
                   color: AppColor.whiteColor,
                 ))
@@ -53,16 +54,12 @@ class _AdhayaScreenState extends ConsumerState<AdhayaScreen> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  // Container(
-                  //   child: Image.asset(ImagePath.adhaya),
-                  // )
-                  ImageOverlapView(),
-
+                  const ImageOverlapView(),
                   Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Column(
                       children: [
-                        LastReadView(),
+                        const LastReadView(),
                         const SizedBox(
                           height: 24,
                         ),
@@ -75,10 +72,15 @@ class _AdhayaScreenState extends ConsumerState<AdhayaScreen> {
             );
           },
           error: (error, stackTrace) {
-            return Text(error.toString());
+            return CustomErrorWidgets(
+              failure: error as Failure,
+              onTap: () {
+                ref.read(getAllChapterProvider.notifier).getAllChapter();
+              },
+            );
           },
           loading: () {
-            return const CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           },
         ));
   }

@@ -2,9 +2,8 @@
 class Failure {
   String message;
   String title;
+  int statusCode;
 
-  Failure({
-    required this.message,
-    required this.title,
-  });
+  Failure(
+      {required this.message, required this.title, required this.statusCode});
 }

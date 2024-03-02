@@ -8,6 +8,8 @@ import 'package:task_app/features/sloklisting/provider/particular_chapter_provid
 import 'package:task_app/features/sloklisting/view/chapter_show_more_view.dart';
 import 'package:task_app/features/sloklisting/view/verse_list_view.dart';
 import 'package:task_app/features/sloklisting/widgets/verse_list_tile.dart';
+import 'package:task_app/services/network/failure.dart';
+import 'package:task_app/widgets/custom_error_widget.dart';
 
 class SlokListingScreen extends ConsumerStatefulWidget {
   final String chapterId;
@@ -81,17 +83,27 @@ class _SlokListingScreenState extends ConsumerState<SlokListingScreen> {
                     const SizedBox(
                       height: 36,
                     ),
-                    VerseListView()
+                    const VerseListView()
                   ],
                 ),
               ),
             );
           },
           error: (error, stackTrace) {
-            return Text(error.toString());
+            return CustomErrorWidgets(
+              failure: error as Failure,
+              onTap: () {
+                ref
+                    .read(getparticularChapterProvider.notifier)
+                    .getParticularChapter(widget.chapterId);
+                ref
+                    .read(getVerseListProvider.notifier)
+                    .getVerseList(widget.chapterId);
+              },
+            );
           },
           loading: () {
-            return CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           },
         ));
   }
