@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_app/config/theme/app_color.dart';
 import 'package:task_app/features/adhyaya/data/model/get_all_chapter_model.dart';
 import 'package:task_app/features/adhyaya/widgets/chapter_list_tile.dart';
+import 'package:task_app/routes/app_routes.dart';
 
 class ChaptersView extends ConsumerWidget {
   List<GetAllChapterModel> getAllChapterMmode;
@@ -36,6 +37,13 @@ class ChaptersView extends ConsumerWidget {
           itemCount: getAllChapterMmode.length,
           itemBuilder: (context, index) {
             return ChapterListTile(
+                onTap: () {
+                  SlokListingRoute(
+                          $extra: getAllChapterMmode[index]
+                              .chapterNumber
+                              .toString())
+                      .go(context);
+                },
                 index: getAllChapterMmode[index].chapterNumber.toString(),
                 title: getAllChapterMmode[index].name ?? "",
                 versesNumber: getAllChapterMmode[index].versesCount.toString());

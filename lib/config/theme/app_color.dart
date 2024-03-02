@@ -24,6 +24,7 @@ class AppColor {
   static const onSecondaryColor = Color(0xffF9902D);
   static const secondaryVariant = Color(0xffb98f3b);
   static const greyTextColor = Color(0xff627485);
+  static const blueTextColor = Color(0xff0038FF);
 
   // error
   static const errorColor = Color(0xffEF2926);

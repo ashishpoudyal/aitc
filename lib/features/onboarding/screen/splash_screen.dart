@@ -29,7 +29,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
       if (isOnBoarded) {
-        const AdhayaListingRoute().pushReplacement(context);
+        const AdhayaListingRoute().go(context);
       } else {
         const OnBoardingRoute().go(context);
       }
