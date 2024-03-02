@@ -11,6 +11,7 @@ import 'package:task_app/features/onboarding/view/on_boarding_page3.dart';
 import 'package:task_app/features/onboarding/view/on_boarding_page4.dart';
 import 'package:task_app/features/onboarding/widget/next_text_widget.dart';
 import 'package:task_app/features/onboarding/widget/skip_text_widget.dart';
+import 'package:task_app/routes/app_routes.dart';
 import 'package:task_app/widgets/custom_button.dart';
 
 class OnBoardingScreen extends ConsumerStatefulWidget {
@@ -64,6 +65,7 @@ class _OnBoardingScreenState extends ConsumerState<OnBoardingScreen> {
                             onPressed: () {
                               getStorage.write(
                                   StorageConstant.isOnBoarded, true);
+                              AdhayaListingRoute().go(context);
                             },
                             child: const Text("Get Started"),
                           ),
